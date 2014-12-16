@@ -1,0 +1,64 @@
+/*	Jani Kähkönen/H9575
+Harjoitus_11	20.9.2014	*/
+
+#include <iostream>
+using namespace std;
+
+class Laskin
+{
+	int _luku_1, _luku_2, _tulos;
+public:
+	Laskin() :_luku_1(0), _luku_2(0), _tulos(0){}
+	void Numerot(int luku_1,int luku_2)
+	{
+		 _luku_1 = luku_1;_luku_2 = luku_2;
+	}
+	void Summa()		{ _tulos = _luku_1 + _luku_2; }
+	void Erotus()		{ _tulos = _luku_1 - _luku_2; }
+	void Tulo()			{ _tulos = _luku_1 * _luku_2; }
+	void Osamaara()		{ if (_luku_1 != 0 && _luku_2 != 0){ _tulos = _luku_1 / _luku_2; } }
+	void jakojaannos()	{ if (_luku_1 != 0 && _luku_2 != 0){ _tulos = _luku_1 % _luku_2; } }
+	void getTulos()		{ cout << "Tulos: " << _tulos << endl; }
+	~Laskin(){}
+};
+
+int main()
+{
+	Laskin laskin;
+	int luku_1=0, luku_2=0, valikko=-1;
+
+	do
+	{
+		cout << "Valikko\n" << "0. Lopetus\n" << "1. Summa\n" << "2. Erotus\n" << "3. Tulo\n" << "4. Osamaara\n" << "5. Jakojaannos\n" << "6. Anna numerot\n";
+		cin >> valikko;
+
+		switch (valikko)
+		{
+		case(0) :
+			cout << "Loppu..." << endl;
+			break;
+		case(1) :
+			laskin.Summa();
+			laskin.getTulos();	break;
+		case(2) :
+			laskin.Erotus();
+			laskin.getTulos();	break;
+		case(3) :
+			laskin.Tulo();
+			laskin.getTulos();	break;
+		case(4) :
+			laskin.Osamaara();
+			laskin.getTulos();	break;
+		case(5) :
+			laskin.jakojaannos();
+			laskin.getTulos();	break;
+		case(6) :
+			system("cls");
+			cout << "Anna numero 1: "; cin >> luku_1;
+			cout << "Anna numero 2: "; cin >> luku_2;
+			laskin.Numerot(luku_1, luku_2);
+			break;
+		default:	break;
+		}
+	} while (valikko != 0);
+}
